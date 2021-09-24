@@ -15,7 +15,7 @@
 - Add your teachers to your project:
   - Lucas: LucasBoisserie
   - Florent: ffauchille
-- Push your `index.html` file from the previous workshop 
+- Push your `index.html` file on `main` from the previous workshop 
 
 ### Step 2: Dockerize your application
 
@@ -130,7 +130,7 @@ If so, you've just deploy a containerized web application, congrats!
 This is the fun part of the workshop, where you will automate the whole process!
 
 What we want you to achieve: 
-- on every commit to master branch, I want my application
+- on every commit to main branch, I want my application
 to be deploy on the production VM. 
 
 In other words, we want you to implement continuous delivery for Garlaxy.
@@ -155,23 +155,23 @@ From your Github project page:
 
 ![create-workflow](images/create-workflow.png)
 
- - Commit the file clicking the `Commit` green button on master, leaving all
+ - Commit the file clicking the `Commit` green button on main, leaving all
    defaults values
 
 ![commit-workflow](images/commit-workflow.png)
 
 From your local machine: 
-- pull changes: `git pull origin master`
+- pull changes: `git pull origin main` 
 - You should see the file `.github/workflows/main.yml`
 - Edit the file by changing the first `name: CI` line by `name: CD`
-- commit / push changes to master
+- commit / push changes to main
 
 From your Github project page:
 - Select the Action tab
 - You should see your workflow running (refresh your browser page if needed).
 
 We just reach our first victory, triggering a pipeline on every commit to
-master!
+main!
 
 #### Step 4.2: Configuring your workflow
 
@@ -181,7 +181,7 @@ Before you start, make sure you understood the previous step. Read again this
 To roughly sum up, a workflow is composed of:
 - a name (to identify your workflow in the `Actions` tab on Github), specified
   by the `name: ...` line
-- a job trigger (here, on every commit to master), specified by the `on: ...` lines
+- a job trigger (here, on every commit to main), specified by the `on: ...` lines
 - `jobs` with a set of `steps`:
   - 1 job is composed of 1 or more steps. A step could be a `shell` command or
     a github action. This is the atomic element of your workflow.
@@ -227,7 +227,7 @@ docker installed and git by default.
 
 But the machine doesn't have our project installed on it.
 
-So we will leave the first step that uses `actions/checkout@v1`. This checks out
+So we will leave the first step that uses `actions/checkout@v2`. This checks out
 the project in this VM machine on ubuntu.
 
 Just add the build step:
@@ -321,5 +321,5 @@ In order to have a nice functionnal CD that works on every run, you should add t
     docker run ...
 ```
 
-Once this is done, try out to push different versions of your `index.html` on master and this should continously deliver the new version on `http://groupeXX.arla-sigl.fr` !
+Once this is done, try out to push different versions of your `index.html` on main and this should continously deliver the new version on `http://groupeXX.arla-sigl.fr` !
 
